@@ -1,0 +1,12 @@
+# Rust artifacts
+**/target/
+
+# Generated files
+Cargo.lock
+test-ledger
+target
+.anchor
+
+# IDE files
+.vscode/
+.idea/
