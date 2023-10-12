@@ -84,13 +84,13 @@ describe("basic-1", () => {
     assert.equal(account.data, 101);
   });
 
-  it("Updates a previously created account", async () => {
+  it("Decrement", async () => {
     const myAccount = _myAccount;
     const program = anchor.workspace.Basic1;
 
     // Invoke the update rpc.
     await program.methods
-      .update(new anchor.BN(4321))
+      .decrement()
       .accounts({
         myAccount: myAccount.publicKey,
       })
@@ -99,8 +99,6 @@ describe("basic-1", () => {
     const account = await program.account.myAccount.fetch(myAccount.publicKey);
 
     // Check it's state was mutated.
-    assert.ok(account.data.eq(new anchor.BN(4321)));
-
-    // #endregion update-test
+    assert.equal(account.data, 100);
   });
 });
